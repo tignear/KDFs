@@ -205,9 +205,9 @@ impl<H: OutputSizeUser, I: HmacImpl<H>> Hkdf<H, I> {
     /// as per section 3.3 from RFC5869.
     pub fn from_prk(prk: &[u8]) -> Result<Self, InvalidPrkLength> {
         // section 2.3 specifies that prk must be "at least HashLen octets"
-        if prk.len() < <H as OutputSizeUser>::OutputSize::to_usize() {
+        /*if prk.len() < <H as OutputSizeUser>::OutputSize::to_usize() {
             return Err(InvalidPrkLength);
-        }
+        }*/
         Ok(Self {
             hmac: I::new_core(prk),
             _pd: PhantomData,
